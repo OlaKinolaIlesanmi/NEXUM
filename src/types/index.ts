@@ -4,7 +4,8 @@ export type Role =
   | 'medical_officer'
   | 'security_officer'
   | 'driver'
-  | 'admin';
+  | 'admin'
+  | 'host';
 
 export interface User {
   id: string;
@@ -179,6 +180,8 @@ export interface Booking {
   totalAmount: number;
   status: 'PendingPayment' | 'Confirmed' | 'CheckedIn' | 'Completed' | 'Cancelled';
   confirmationCode?: string;
+  paystackReference?: string;  // ← added
+  paidAt?: string;   
   createdAt: string;
 }
 

@@ -55,6 +55,8 @@ export const authApi = {
 
 // ── Properties & Bookings ─────────────────────────────────────
 export const propertyApi = {
+  create: (token: string, body: unknown) =>
+    request('/properties', { method: 'POST', token, body: JSON.stringify(body) }),
   list: (params?: { page?: number; pageSize?: number }) => {
     const q = new URLSearchParams({
       page: String(params?.page ?? 1),
@@ -183,4 +185,33 @@ export const transitApi = {
     request(`/transit/network/edges/${id}/close`, { method: 'PUT', token }),
   openEdge: (token: string, id: string) =>
     request(`/transit/network/edges/${id}/open`, { method: 'PUT', token }),
+};
+
+// ── Bank accounts ─────────────────────────────────────────────
+export const bankApi = {
+  getBanks: (token: string) =>
+    request('/host/bank-accounts/banks', { token }),
+
+  verify: (token: string, body: { bankCode: string; accountNumber: string }) =>
+    request('/host/bank-accounts/verify', {
+      method: 'POST', token, body: JSON.stringify(body),
+    }),
+
+  add: (token: string, body: { bankCode: string; accountNumber: string }) =>
+    request('/host/bank-accounts', {
+      method: 'POST', token, body: JSON.stringify(body),
+    }),
+
+  list: (token: string) =>
+    request('/host/bank-accounts', { token }),
+
+  remove: (token: string, id: string) =>
+    request(`/host/bank-accounts/${id}`, { method: 'DELETE', token }),
+};
+
+// ── Transfers ─────────────────────────────────────────────────
+export const transferApi = {
+  // Admin can see all transfers for a booking
+  forBooking: (token: string, bookingId: string) =>
+    request(`/admin/bookings/${bookingId}/transfers`, { token }),
 };

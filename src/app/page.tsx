@@ -11,6 +11,7 @@ const ROLE_HOME: Record<Role, string> = {
   security_officer: '/officer/missing-persons',
   driver:           '/driver/rides',
   admin:            '/admin/dashboard',
+  host:             '/host/properties',
 };
 
 export default async function LandingPage() {

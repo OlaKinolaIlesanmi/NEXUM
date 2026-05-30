@@ -8,6 +8,7 @@ const ROLE_REDIRECTS: Record<Role, string> = {
   security_officer: '/officer/missing-persons',
   driver: '/driver/rides',
   admin: '/admin/dashboard',
+  host: '/host/properties',
 };
 
 const PROTECTED_PREFIXES: { prefix: string; roles: Role[] }[] = [
@@ -15,6 +16,7 @@ const PROTECTED_PREFIXES: { prefix: string; roles: Role[] }[] = [
   { prefix: '/officer', roles: ['medical_officer', 'security_officer', 'admin'] },
   { prefix: '/driver', roles: ['driver', 'admin'] },
   { prefix: '/worshipper', roles: ['worshipper', 'admin'] },
+  { prefix: '/host', roles: ['host', 'admin'] },
 ];
 
 export async function middleware(req: NextRequest) {
@@ -57,6 +59,7 @@ export const config = {
     '/officer/:path*',
     '/driver/:path*',
     '/worshipper/:path*',
+    '/host/:path*',
     '/login',
     '/register',
     '/forgot-password',
