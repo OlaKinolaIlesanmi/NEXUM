@@ -95,7 +95,7 @@ export const bookingApi = {
 
   // Admin
   all: (token: string, page = 1) =>
-    request<PagedResult<import('@/types').Booking>>(`/bookings?page=${page}`, { token }),
+    request<PagedResult<import('@/types').Booking>>(`/admin/bookings?page=${page}`, { token }),
 };
 
 // ── Emergency ─────────────────────────────────────────────────
