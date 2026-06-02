@@ -148,6 +148,31 @@ export const alertApi = {
       `/alerts/missing-persons/${id}/sightings`, { token }),
 };
 
+// ── Admin – Properties ───────────────────────────────────────
+export const adminPropertyApi = {
+  list: (token: string, params?: { page?: number; pageSize?: number; status?: string }) => {
+    const q = new URLSearchParams({
+      page: String(params?.page ?? 1),
+      pageSize: String(params?.pageSize ?? 20),
+      ...(params?.status ? { status: params.status } : {}),
+    });
+    return request(`/admin/properties?${q}`, { token });
+  },
+
+  approve: (token: string, id: string) =>
+    request(`/admin/properties/${id}/approve`, { method: 'PUT', token }),
+
+  reject: (token: string, id: string, reason: string) =>
+    request(`/admin/properties/${id}/reject`, {
+      method: 'PUT', token, body: JSON.stringify({ reason }),
+    }),
+
+  supervise: (token: string, id: string, visitDate: string) =>
+    request(`/admin/properties/${id}/supervise`, {
+      method: 'PUT', token, body: JSON.stringify({ visitDate }),
+    }),
+};
+
 // ── Admin – Geofence ──────────────────────────────────────────
 export const geofenceApi = {
   getActive: () =>
