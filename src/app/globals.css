@@ -36,3 +36,16 @@
 .leaflet-container { z-index: 0; }
 .leaflet-pane { z-index: 0 !important; }
 .leaflet-top, .leaflet-bottom { z-index: 1 !important; }
+
+/* Helpers from static prototype for properties listing */
+.hero-gradient {
+  /* Reduced overlay opacity to make image more visible like the design */
+  background: linear-gradient(180deg, rgba(10, 68, 160, 0.4) 0%, rgba(0, 48, 115, 0.7) 100%), var(--hero-image, none);
+  background-size: cover;
+  background-position: center;
+}
+.stats-card-gradient {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

@@ -70,21 +70,21 @@ export default async function PropertiesPage({
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl text-left">
+            <div className="stats-card-gradient p-6 rounded-xl text-left">
               <h2 className="text-3xl font-black mb-1">5M+</h2>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-white/80">Peak worshippers</p>
+              <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/80">Peak worshippers</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl text-left">
+            <div className="stats-card-gradient p-6 rounded-xl text-left">
               <h2 className="text-3xl font-black mb-1">2,500</h2>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-white/80">Hectares covered</p>
+              <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/80">Hectares covered</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl text-left">
+            <div className="stats-card-gradient p-6 rounded-xl text-left">
               <h2 className="text-3xl font-black mb-1">3s</h2>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-white/80">Emergency dispatch</p>
+              <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/80">Emergency dispatch</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl text-left">
+            <div className="stats-card-gradient p-6 rounded-xl text-left">
               <h2 className="text-3xl font-black mb-1">24/7</h2>
-              <p className="text-[10px] uppercase tracking-widest font-bold text-white/80">Always active</p>
+              <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/80">Always active</p>
             </div>
           </div>
         </div>
