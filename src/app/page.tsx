@@ -23,11 +23,11 @@ export default async function LandingPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-[#0047AB] py-3 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 shadow-md">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
           <div className="bg-white p-2 rounded-md shadow-sm">
             <span className="font-extrabold text-[#0047AB] text-sm tracking-tight">Nexum</span>
           </div>
-        </div>
+        </Link>
         <nav className="hidden md:flex items-center gap-8 text-white text-sm font-semibold">
           <a href="#features" className="hover:text-[#FFA500] transition-colors">Features</a>
           <a href="#modules" className="hover:text-[#FFA500] transition-colors">Modules</a>

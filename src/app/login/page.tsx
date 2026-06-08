@@ -2,7 +2,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { LoginForm } from '@/components/shared/LoginForm';
-import { Shield } from 'lucide-react';
+import { Shield, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default async function LoginPage({
   searchParams,
@@ -14,6 +15,12 @@ export default async function LoginPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1B3A6B] to-[#2563EB] flex items-center justify-center p-4">
+      <div className="absolute top-4 left-4">
+        <Link href="/" className="flex items-center gap-2 text-white hover:text-blue-100 transition-colors">
+          <ArrowLeft className="h-5 w-5" />
+          <span className="text-sm font-medium">Back to Home</span>
+        </Link>
+      </div>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
