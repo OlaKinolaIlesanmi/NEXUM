@@ -3,7 +3,6 @@ import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import type { Role } from '@/types';
 import Link from 'next/link';
-import { Shield, AlertTriangle, Search, Bus, Car, ArrowRight, ChevronRight } from 'lucide-react';
 
 const ROLE_HOME: Record<Role, string> = {
   worshipper:       '/worshipper/bookings',
@@ -22,247 +21,149 @@ export default async function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ── Nav ── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-[#1B3A6B]" />
-            <span className="text-xl font-bold text-[#1B3A6B]">Nexum</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-gray-600">
-            <a href="#features" className="hover:text-[#1B3A6B] transition-colors">Features</a>
-            <a href="#modules" className="hover:text-[#1B3A6B] transition-colors">Modules</a>
-            <Link href="/properties" className="hover:text-[#1B3A6B] transition-colors">Properties</Link>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Link href="/login"
-              className="text-sm font-medium text-gray-700 hover:text-[#1B3A6B] transition-colors px-3 py-2">
-              Sign In
-            </Link>
-            <Link href="/register"
-              className="text-sm font-medium bg-[#1B3A6B] text-white px-4 py-2 rounded-lg hover:bg-[#2563EB] transition-colors">
-              Get Started
-            </Link>
+      {/* Header */}
+      <header className="bg-[#0047AB] py-3 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 shadow-md">
+        <div className="flex items-center gap-2">
+          <div className="bg-white p-2 rounded-md shadow-sm">
+            <span className="font-extrabold text-[#0047AB] text-sm tracking-tight">Nexum</span>
           </div>
         </div>
+        <nav className="hidden md:flex items-center gap-8 text-white text-sm font-semibold">
+          <a href="#features" className="hover:text-[#FFA500] transition-colors">Features</a>
+          <a href="#modules" className="hover:text-[#FFA500] transition-colors">Modules</a>
+          <Link href="/properties" className="hover:text-[#FFA500] transition-colors">Properties</Link>
+        </nav>
+        <button className="bg-[#FFA500] text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-orange-600 transition-all shadow-sm">
+          <Link href="/login">Login / Sign up</Link>
+        </button>
       </header>
 
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-24 px-6 bg-gradient-to-b from-[#0F1F3D] via-[#1B3A6B] to-[#2563EB]">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-xs font-medium px-4 py-1.5 rounded-full mb-8 border border-white/20">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-400 inline-block"></span>
-            Real-time safety · Track 0D — Incident Management
+      {/* Hero */}
+      <section className="pt-20 pb-12 px-6 text-center relative" style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(239,246,255,0.88)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAYwGOK22-q1DQYz7mFflh5HGs7S7pKP5lSrrODhlPPeBXwjwXBx2lsJFbpLeYdJKehoE0rDPj5yISwsSU8w0fWWbjJMtoeO2ToXIZDEHOux-oEMArwqIAkXPE5aRSykxe4JbQHbwjaKuN38D9qmTTcbnZwcsA7MAgM9luEooXi2z-znjxn_n7LFwJqhbaDg5HWVWh44u5s5NoVmoBQ1S6aFrd_BxrGWZxB20pGKB_wVNO9104KFFuRlhCoTgnm5apFazu1o7h6RSc)' }}>
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">Safety Intelligence for <br/><span className="text-[#0047AB]">Redemption City</span></h1>
+          <p className="text-slate-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">Real-time emergency dispatch, automated escalation, and crowd coordination for the world's largest regular gathering — 5 million worshippers, one platform.</p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <Link href="/register" className="bg-[#0047AB] text-white px-10 py-3 rounded-lg font-bold shadow-md hover:bg-[#003380] transition-all inline-block">Create Account</Link>
+            <Link href="/properties" className="bg-white border border-slate-200 text-slate-800 px-10 py-3 rounded-lg font-bold hover:bg-slate-50 transition-all inline-block">Browse Properties</Link>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-            Safety Intelligence for<br />
-            <span className="text-blue-300">Redemption City</span>
-          </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Real-time emergency dispatch, automated escalation, and crowd coordination
-            for the world's largest regular gathering — 5 million worshippers, one platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register"
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#1B3A6B] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
-              Create Account
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/properties"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/20 transition-colors border border-white/20">
-              Browse Properties
-            </Link>
-          </div>
-        </div>
 
-        {/* Stat strip */}
-        <div className="max-w-4xl mx-auto mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { value: '5M+',   label: 'Peak worshippers' },
-            { value: '2,500', label: 'Hectares covered' },
-            { value: '3s',    label: 'Emergency dispatch' },
-            { value: '24/7',  label: 'Always active' },
-          ].map(stat => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl font-bold text-white">{stat.value}</div>
-              <div className="text-sm text-blue-300 mt-1">{stat.label}</div>
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mx-auto">
+            <div className="bg-[#0047AB] text-white p-4 rounded-lg flex flex-col justify-center">
+              <span className="text-2xl md:text-3xl font-extrabold">5M+</span>
+              <span className="text-[9px] uppercase font-bold tracking-wider opacity-90 mt-1">Peak worshippers</span>
             </div>
-          ))}
+            <div className="bg-white/90 text-[#0047AB] p-4 rounded-lg border border-slate-200 flex flex-col justify-center">
+              <span className="text-2xl md:text-3xl font-extrabold">2,500</span>
+              <span className="text-[9px] uppercase font-bold tracking-wider text-slate-600 mt-1">Hectares covered</span>
+            </div>
+            <div className="bg-white/90 text-[#0047AB] p-4 rounded-lg border border-slate-200 flex flex-col justify-center">
+              <span className="text-2xl md:text-3xl font-extrabold">3s</span>
+              <span className="text-[9px] uppercase font-bold tracking-wider text-slate-600 mt-1">Emergency dispatch</span>
+            </div>
+            <div className="bg-[#0047AB] text-white p-4 rounded-lg flex flex-col justify-center">
+              <span className="text-2xl md:text-3xl font-extrabold">24/7</span>
+              <span className="text-[9px] uppercase font-bold tracking-wider opacity-90 mt-1">Always active</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── The Problem ── */}
-      <section className="py-24 px-6 bg-gray-50" id="features">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            The coordination gap Nexum closes
-          </h2>
-          <p className="text-lg text-gray-500">
-            When five million people converge on a 3km² auditorium zone, existing tools fail.
-            Walkie-talkies, WhatsApp groups, and PA announcements cannot scale to this density.
-          </p>
+      {/* The coordination gap */}
+      <section className="bg-gray-50 py-16 px-6" id="features">
+        <div className="max-w-5xl mx-auto text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">The coordination gap Nexum closes</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm md:text-base">Real-time emergency dispatch, automated escalation, and crowd coordination for the world's largest regular gathering — 5 million worshippers, one platform.</p>
         </div>
+
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-lg">⏱</div>
+            <h3 className="font-bold text-base mb-2 text-slate-900">Manual response is too slow</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">Locating a responder in a crowd of millions takes over 15 minutes. In cardiac arrest, every minute reduces survival rate by 10%.</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-lg">🔔</div>
+            <h3 className="font-bold text-base mb-2 text-slate-900">Escalation depends on humans</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">No automated protocol exists to reward and route text-based emergencies or broadcast missing person alerts to every device inside camp.</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-lg">🗂</div>
+            <h3 className="font-bold text-base mb-2 text-slate-900">Infrastructure is invisible</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">Guest properties operate with no unified security directory. Bookings happen through WhatsApp leading to leakage with no double booking protection.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Modules */}
+      <section className="py-16 px-6 bg-white" id="modules">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">One platform, every module</h2>
+            <p className="text-slate-500 text-sm md:text-base">Built specifically for Redemption City. Each module addresses a real operational failure.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { icon: '📍', title: 'Emergency Dispatch', desc: 'One-tap emergency report. Server captures GPS, runs PostGIS proximity match, dispatches the nearest available officer within 3 seconds via SignalR WebSocket and FCM push.' },
+              { icon: '👤', title: 'Missing Persons', desc: 'Geofenced broadcast of missing person alerts with photographs to every device inside camp simultaneously. Sightings reported with GPS coordinates update a live map for security officers.' },
+              { icon: '🚗', title: 'Smart Parking', desc: 'Worshippers pin their car\'s GPS location on arrival. Blocking vehicle reports trigger immediate owner notification. No response in 5 minutes escalates automatically to traffic wardens.' },
+              { icon: '🚐', title: 'Transit & Shuttle Routing', desc: 'Shuttle dispatch via pgRouting over a digitised camp road network. Real-time congestion detection reroutes active journeys automatically. Admin can close road segments instantly.' },
+            ].map(mod => (
+              <div key={mod.title} className="bg-blue-50 p-6 rounded-2xl border border-blue-100 hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">{mod.icon}</div>
+                <h3 className="text-lg font-bold mb-2 text-slate-900">{mod.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">{mod.desc}</p>
+                <a href="#" className="text-[#0047AB] font-bold text-sm">Learn more →</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Roles */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Built for every role</h2>
+          <p className="text-slate-500 text-sm md:text-base">One app, personalised for how you serve the camp.</p>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            {
-              icon: '⏱',
-              title: 'Manual response is too slow',
-              body: 'Locating a responder in a crowd of millions takes tens of minutes. In a cardiac arrest, every minute reduces survival odds by 10%.',
-              accent: 'border-red-200 bg-red-50',
-            },
-            {
-              icon: '📢',
-              title: 'Escalation depends on humans',
-              body: 'No automated protocol exists to re-escalate unacknowledged emergencies or broadcast missing person alerts to every device inside camp.',
-              accent: 'border-amber-200 bg-amber-50',
-            },
-            {
-              icon: '🗂',
-              title: 'Infrastructure is invisible',
-              body: 'Guest properties operate with no unified inspection registry. Bookings happen through WhatsApp and handwritten lists with no double-booking protection.',
-              accent: 'border-blue-200 bg-blue-50',
-            },
-          ].map(card => (
-            <div key={card.title} className={`rounded-2xl border p-6 ${card.accent}`}>
-              <div className="text-3xl mb-4">{card.icon}</div>
-              <h3 className="font-semibold text-gray-900 mb-2">{card.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{card.body}</p>
+            { icon: '🙏', name: 'Worshipper', desc: 'Report emergencies, find missing persons, pin your car, and book verified accommodation.' },
+            { icon: '⚕️', name: 'Medical Officer', desc: 'Receive real-time dispatch alerts, manage incident cases, and locate nearest equipment.' },
+            { icon: '👮', name: 'Security Officer', desc: 'Monitor missing person alerts, receive dispatch notifications, and coordinate responses.' },
+            { icon: '🚌', name: 'Shuttle Driver', desc: 'Accept pickup requests based on your location and navigate the camp road network.' },
+          ].map(role => (
+            <div key={role.name} className="bg-white p-6 rounded-2xl text-center hover:shadow-md transition-shadow">
+              <div className="text-3xl mb-3">{role.icon}</div>
+              <h4 className="font-bold text-slate-900 mb-2">{role.name}</h4>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{role.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── Modules ── */}
-      <section className="py-24 px-6" id="modules">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">One platform, every module</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Built specifically for Redemption City. Each module addresses a real operational failure.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: <AlertTriangle className="h-6 w-6 text-red-500" />,
-                bg: 'bg-red-50',
-                title: 'Emergency Dispatch',
-                badge: 'Track 0D Core',
-                badgeColor: 'bg-red-100 text-red-700',
-                body: 'One-tap emergency report. Server captures GPS, runs PostGIS proximity match, dispatches the nearest available officer within 3 seconds via SignalR WebSocket and FCM push.',
-                points: ['Medical & security incidents', 'Auto-dispatch to nearest officer', 'Automated re-escalation at 2 minutes'],
-              },
-              {
-                icon: <Search className="h-6 w-6 text-amber-500" />,
-                bg: 'bg-amber-50',
-                title: 'Missing Persons',
-                badge: 'Track 0D Core',
-                badgeColor: 'bg-amber-100 text-amber-700',
-                body: 'Geofenced broadcast of missing person alerts with photographs to every device inside camp simultaneously. Sightings reported with GPS coordinates update a live map for security officers.',
-                points: ['Photo broadcast to all camp users', 'GPS sighting reporting', 'Live sightings map for officers'],
-              },
-              {
-                icon: <Car className="h-6 w-6 text-blue-500" />,
-                bg: 'bg-blue-50',
-                title: 'Smart Parking',
-                badge: 'Differentiator',
-                badgeColor: 'bg-blue-100 text-blue-700',
-                body: 'Worshippers pin their car\'s GPS location on arrival. Blocking vehicle reports trigger immediate owner notification. No response in 5 minutes escalates automatically to traffic wardens.',
-                points: ['GPS car pin with photo', 'Blocking vehicle alerts', 'Auto-escalation to wardens'],
-              },
-              {
-                icon: <Bus className="h-6 w-6 text-teal-600" />,
-                bg: 'bg-teal-50',
-                title: 'Transit & Shuttle Routing',
-                badge: 'Differentiator',
-                badgeColor: 'bg-teal-100 text-teal-700',
-                body: 'Shuttle dispatch via pgRouting over a digitised camp road network. Real-time congestion detection reroutes active journeys automatically. Admin can close road segments instantly.',
-                points: ['GPS proximity dispatch', 'Live congestion detection', 'Dynamic route recalculation'],
-              },
-            ].map(mod => (
-              <div key={mod.title} className="rounded-2xl border border-gray-100 p-7 hover:shadow-md transition-shadow bg-white">
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`p-2.5 rounded-xl ${mod.bg}`}>{mod.icon}</div>
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${mod.badgeColor}`}>
-                    {mod.badge}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{mod.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-4">{mod.body}</p>
-                <ul className="space-y-1.5">
-                  {mod.points.map(pt => (
-                    <li key={pt} className="flex items-center gap-2 text-sm text-gray-600">
-                      <ChevronRight className="h-3.5 w-3.5 text-gray-400 flex-shrink-0" />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Role CTAs ── */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for every role</h2>
-            <p className="text-gray-500">One app, personalised for how you serve the camp.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {[
-              { emoji: '🙏', role: 'Worshipper', desc: 'Report emergencies, find missing persons, pin your car, and book accommodation.', cta: 'Register free', href: '/register', color: 'hover:border-blue-300' },
-              { emoji: '🏥', role: 'Medical Officer', desc: 'Receive real-time dispatch alerts, manage incident queue, update response status.', cta: 'Officer login', href: '/login', color: 'hover:border-red-300' },
-              { emoji: '👮', role: 'Security Officer', desc: 'Manage missing person alerts, receive dispatch notifications, coordinate response.', cta: 'Officer login', href: '/login', color: 'hover:border-amber-300' },
-              { emoji: '🚌', role: 'Shuttle Driver', desc: 'Accept pickup requests, broadcast your location, navigate the camp road network.', cta: 'Driver login', href: '/login', color: 'hover:border-teal-300' },
-            ].map(r => (
-              <div key={r.role}
-                className={`bg-white rounded-2xl border border-gray-200 ${r.color} p-6 flex flex-col transition-colors`}>
-                <div className="text-4xl mb-3">{r.emoji}</div>
-                <div className="font-semibold text-gray-900 mb-2">{r.role}</div>
-                <p className="text-sm text-gray-500 leading-relaxed flex-1 mb-4">{r.desc}</p>
-                <Link href={r.href}
-                  className="text-sm font-medium text-[#1B3A6B] hover:text-[#2563EB] flex items-center gap-1 transition-colors">
-                  {r.cta} <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Properties CTA ── */}
-      <section className="py-24 px-6 bg-[#1B3A6B]">
+      {/* CTA */}
+      <section className="bg-[#0047AB] text-white py-12 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Looking for accommodation at Redemption City?
-          </h2>
-          <p className="text-blue-200 text-lg mb-8">
-            Browse approved guest properties. No account needed to explore — only required when you book.
-          </p>
-          <Link href="/properties"
-            className="inline-flex items-center gap-2 bg-white text-[#1B3A6B] font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
-            Browse Properties
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-3">Looking for accommodation at Redemption City?</h2>
+          <p className="text-blue-100 text-sm md:text-base mb-6">Browse approved guest properties. No account needed to explore, only required when you book.</p>
+          <Link href="/properties" className="inline-block bg-[#FFA500] text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600 transition-all">Browse Properties</Link>
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="py-12 px-6 border-t border-gray-100">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-300 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs md:text-sm">
           <div className="flex items-center gap-2">
-            <Shield className="h-5 w-5 text-[#1B3A6B]" />
-            <span className="font-bold text-[#1B3A6B]">Nexum</span>
-            <span className="text-gray-400 text-sm ml-2">· Redemption City Safety Platform</span>
+            <div className="bg-white p-1 rounded">
+              <span className="font-black text-slate-900 text-xs">Nexum</span>
+            </div>
           </div>
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <Link href="/properties" className="hover:text-gray-900 transition-colors">Properties</Link>
-            <Link href="/login" className="hover:text-gray-900 transition-colors">Sign In</Link>
-            <Link href="/register" className="hover:text-gray-900 transition-colors">Register</Link>
-          </div>
-          <div className="text-sm text-gray-400">© 2026 Nexum · Track 0D Submission</div>
+          <div className="text-center">© 2026 Nexum Intelligence. All rights reserved. · Designed for Redemption City</div>
         </div>
       </footer>
     </div>
