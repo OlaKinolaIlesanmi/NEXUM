@@ -29,6 +29,54 @@ export default async function PropertiesPage({
     backendOffline = true;
   }
 
+  // Fallback sample properties to display when the backend is not reachable
+  const SAMPLE_PROPERTIES: Property[] = [
+    {
+      id: 'sample-1',
+      name: 'Moses Apartment',
+      description: 'Beside Old Auditorium, Redemption City, Mowe, Ogun State.',
+      address: 'Beside Old Auditorium, Redemption City, Mowe, Ogun State.',
+      photoUrls: ['https://lh3.googleusercontent.com/aida-public/AB6AXuA0cyBpDGBEQOw3Hg4levw3n5DwtOsn6GAJULgFZW8QdPQgBO-GtyA6dFd3_R6_DlD3bkWBnbHC_qub3wcgcGqQHofiiDsKx3LKwQVuZnnitOy1UEaH3qgxUDMmoI4Zxz3OBGePlWDGsAaTwSkh_XxXhOibc_JlT2mHp8Gc-zd0OzGWHJT_CKCQYQI47-IV4ea_4R1kgciQlBPHxseAd7Zpz4y8RgK0u2JP-BDA6xVUIKL_60wXgH4ZXdNzoSNAFaWuDFdyGfIJYJ0'],
+      hostId: 'host-1',
+      hostName: 'Chinedu Okafor',
+      status: 'Published',
+    },
+    {
+      id: 'sample-2',
+      name: 'RCCG Dove Guest House',
+      description: 'Directly beside Moses Apartment, near Old Auditorium, Redemption City, Mowe, Ogun State.',
+      address: 'Directly beside Moses Apartment, near Old Auditorium, Redemption City, Mowe, Ogun State.',
+      photoUrls: ['https://lh3.googleusercontent.com/aida-public/AB6AXuDoembFrOic5yUY1jU_so0Mycpx7UMF5ZVWNRJNwEWOW8I-aURTt3uXsqeG4IeALLccNFfpkhevdV_PYauNWmj-ZJk4DQ3-KfGpuN4fQhJ_R3-v2HKgnvt0Msz7qav1nCV5c3s0PZ2b_ot_-gQyc90INtmdavTGjxqYM9MVjPDobLBqX8SjNUz6rabcIkcmsBK9N8UL2O_LnGI70twBIhj5ATnMh4RwyygwcLMyapB3gADwbJCILHcTzEqqNG2DIpOcQDNNjrTGz5U'],
+      hostId: 'host-2',
+      hostName: 'Oluwaseun Awolowo',
+      status: 'Published',
+    },
+    {
+      id: 'sample-3',
+      name: 'Overflow Executive Chalets',
+      description: 'Beside Moses Apartment, Old Auditorium Axis, Redemption City, Mowe, Ogun State.',
+      address: 'Beside Moses Apartment, Old Auditorium Axis, Redemption City, Mowe, Ogun State.',
+      photoUrls: ['https://lh3.googleusercontent.com/aida-public/AB6AXuAjOsVlF0K9BIAhu57jm8imidbOuFKncw5mFd5eOjc9A22qHsDHgWA6GD40rsloT4JxiUTamG28--D4UuSIydxLKR2P0_eNWgls9ygm-CmdDJDoYSV22hOARbn8nIhGM52Xs3gZJTDwssHXclRwRYBLngwZeHowh76yKPe9ZfXT2gVcmbujQ0Nns8dw1QnlOVAcDXVEo-6xgrpczwCwZRpivdG6GABccHTesgWVs7pVkE80G4Iywpuo-3gYH2o0xALPeKm9vKp18Mw'],
+      hostId: 'host-3',
+      hostName: 'Efeoghene Okoro',
+      status: 'Published',
+    },
+    {
+      id: 'sample-4',
+      name: 'Gethsemane Lodges',
+      description: 'Beside Pillar 29, close to Shiloh Apartments, Old Auditorium Axis, Redemption City, Mowe, Ogun State.',
+      address: 'Beside Pillar 29, close to Shiloh Apartments, Old Auditorium Axis, Redemption City, Mowe, Ogun State.',
+      photoUrls: ['https://lh3.googleusercontent.com/aida-public/AB6AXuAd5cvSjPw3CZ_-ovLXtRi8FDlqorT0D-XydeqTfVH_6tA8BZsfas7jty61u4dyA5wtHiHDbdWoCRtQt1vVWAhgAelXfe8zMbFwl4xMhDGymNxy576WH7IyFAW_Xg-NLjRBpHzMsyIGC7w2ztG87aQx-4ck020O0h-k7f5O63I-hAXISvbPP9ASd_aOsGquvCWNqkCE55oZehU1LZdjDGcr55g3JevcyAefaP9zfkjsrrS9fEJR-r533t1YepvsS_RcdNTwWKfVuBY'],
+      hostId: 'host-4',
+      hostName: 'Chisom Nwachukwu',
+      status: 'Published',
+    },
+  ];
+
+  if (backendOffline && properties.length === 0) {
+    properties = SAMPLE_PROPERTIES;
+  }
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
