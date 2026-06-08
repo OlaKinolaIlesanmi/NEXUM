@@ -16,13 +16,13 @@ export function HostSidebar({ user }: { user: { name?: string | null; email?: st
   const pathname = usePathname();
 
   return (
-    <aside className="w-56 flex-shrink-0 bg-teal-900 text-white flex flex-col">
+    <aside className="w-56 flex-shrink-0 bg-primary text-white flex flex-col">
       <div className="p-4 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <Shield className="h-5 w-5 text-teal-300" />
+          <Shield className="h-5 w-5 text-orange-200" />
           <span className="font-bold">Nexum</span>
         </div>
-        <div className="text-xs text-teal-300 mt-1">{roleName(user.role)}</div>
+        <div className="text-xs text-orange-200 mt-1">{roleName(user.role)}</div>
       </div>
       <nav className="flex-1 p-3 space-y-1">
         {NAV.map(item => {
@@ -32,7 +32,7 @@ export function HostSidebar({ user }: { user: { name?: string | null; email?: st
             <Link key={item.href} href={item.href}
               className={cn(
                 'flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-colors',
-                active ? 'bg-white/15 text-white font-medium' : 'text-teal-100 hover:bg-white/10'
+                active ? 'bg-white/15 text-white font-medium' : 'text-primary/80 hover:bg-white/10'
               )}>
               <Icon className="h-4 w-4" />
               {item.label}
@@ -42,9 +42,9 @@ export function HostSidebar({ user }: { user: { name?: string | null; email?: st
       </nav>
       <div className="p-3 border-t border-white/10">
         <div className="text-sm font-medium truncate">{user.name}</div>
-        <div className="text-xs text-teal-300 truncate">{user.email}</div>
+        <div className="text-xs text-orange-200 truncate">{user.email}</div>
         <button onClick={() => signOut({ callbackUrl: '/login' })}
-          className="mt-2 flex items-center gap-2 text-xs text-teal-300 hover:text-white transition-colors">
+          className="mt-2 flex items-center gap-2 text-xs text-orange-200 hover:text-white transition-colors">
           <LogOut className="h-3.5 w-3.5" /> Sign out
         </button>
       </div>
